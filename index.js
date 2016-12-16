@@ -135,15 +135,17 @@ function do_bundle(file, opts){
                     return jspm_opts;
         })();
 
-        var method = opts.selfExecutingBundle?'bundleSFX':'bundle';
+        var method = opts.selfExecutingBundle?'build':'bundle';
 
-        info_log('calling `jspm.'+method+"('"+jspm_input+"','"+jspm_output+"',"+JSON.stringify(jspm_opts)+');`', infos);
+        var builder = new jspm.Builder();
+
+        info_log('calling `builder.'+method+"('"+jspm_input+"','"+jspm_output+"',"+JSON.stringify(jspm_opts)+');`', infos);
 
         return Promise.resolve(
-            jspm[method](jspm_input, jspm_output, jspm_opts)
+            builder[method](jspm_input, jspm_output, jspm_opts)
         )
         .then(function(){
-            info_log('jspm.'+method+'() called', infos);
+            info_log('builder.'+method+'() called', infos);
 
             return infos;
         });

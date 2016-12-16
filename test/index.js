@@ -81,7 +81,7 @@ describe('gulp_jspm()', function() {
 
     it("should support arithmetics", function(done){
         gulp.src(script_path)
-            .pipe(gulp_jspm({arithmetic:'   - message  '}))
+            .pipe(gulp_jspm({arithmetic:'   - message.js  '}))
             .pipe(stream_assert.test(function(bundle_file) {
                 assert( bundle_file.contents );
                 assert( /System\.register\("main.js".*message/.test( bundle_file.contents ) );

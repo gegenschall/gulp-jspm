@@ -1,5 +1,4 @@
 System.config({
-  defaultJSExtensions: true,
   transpiler: "traceur",
   paths: {
     "github:*": "jspm_packages/github/*",
